@@ -9,8 +9,8 @@ import tensorflow as tf
 
 app=FastAPI()
 
-model=tf.keras.models.load_model(r'/home/aarke/Coding/potato_proj/saved_models/1')
-class_names=['Early_Blight','Healthy','Late_Blight']
+model=tf.keras.models.load_model(r'/home/aarke/Coding/potato_proj/saved_models/2')
+class_names=['Healthy','Early_Blight','Late_Blight']
 
 @app.get('/status')
 async def status():
