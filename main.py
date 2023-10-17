@@ -22,8 +22,8 @@ def read_file_as_image(data) -> np.ndarray:
 
 @app.post('/predict')
 async def predict(file: UploadFile=File(...)):
-    img=read_file_as_image(await file.read())
-    img_batch=np.expand_dims(img,0)
+    imgs=read_file_as_image(await file.read())
+    img_batch=np.expand_dims(imgs,0)
     # img_batch=np.array([img])
     prediction=model.predict(img_batch)
     prediction_class=class_names[np.argmax(prediction[0])]
