@@ -27,8 +27,8 @@ async def predict(file: UploadFile=File(...)):
     # img_batch=np.array([img])
     prediction=model.predict(img_batch)
     prediction_class=class_names[np.argmax(prediction[0])]
-    confidence=np.max(prediction[0])
-    return {'class': prediction_class,'confidence': float(confidence)}
+    confidence=np.max(prediction[0])*100
+    return {'class': prediction_class,'confidence': str(float(confidence))[:5]+'%'}
 
 if __name__=='__main__':
     uvicorn.run(app, host='localhost', port=8000)
